@@ -1,0 +1,171 @@
+/** ====================
+ *  Auth css
+=======================*/
+#auth_layout {
+  .auth_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    &.scrolled {
+      padding-bottom: 15px;
+      background-color: #fafafa;
+      box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .logo_bx {
+    img {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(0%)
+        hue-rotate(225deg) brightness(103%) contrast(100%);
+    }
+  }
+  .language_bx {
+    .choose_lang {
+      span {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px 15px;
+        color: var(--main_black);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        img {
+          width: 35px;
+        }
+        &:lang(en) {
+          font-weight: 600;
+          font-family: myArFont;
+        }
+        &:lang(ar) {
+          font-weight: 500;
+          text-transform: capitalize;
+          font-family: myEnFont;
+        }
+      }
+    }
+  }
+  .auth_content_bx {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    .data_bx {
+      width: 50%;
+      min-height: calc(100vh - 30px);
+    }
+  }
+  .content_bx {
+    width: 84%;
+    max-width: 84%;
+    margin: 0 auto;
+  }
+  .data_bx {
+    min-height: calc(100vh - 30px);
+    display: flex;
+    gap: 15px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #auth_form_bx {
+    div.h-10 {
+      height: auto !important;
+    }
+    input {
+      height: 56px;
+      border-radius: 10px;
+      border-color: #f5f6f8;
+      background-color: #f5f6f8;
+      &:lang(en) {
+        font-family: myEnFont;
+      }
+      &:lang(ar) {
+        font-family: myArFont;
+      }
+    }
+    .country_select {
+      input {
+        height: 42px;
+      }
+      .css-t3ipsp-control,
+      .css-13cymwt-control {
+        border-radius: 10px;
+        border-color: #f5f6f8;
+        background-color: #f5f6f8;
+      }
+      .css-t3ipsp-control {
+        box-shadow: 0 0 0 1px #1f1f1f;
+      }
+    }
+    label {
+      color: #364153;
+      font-size: 16px;
+      &:lang(en) {
+        font-weight: 500;
+        font-family: myEnFont;
+      }
+      &:lang(ar) {
+        font-weight: 500;
+        font-family: myArFont;
+      }
+    }
+    .eye_icon {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(12%) saturate(543%)
+        hue-rotate(182deg) brightness(90%) contrast(86%);
+    }
+    .forgot_link {
+      a {
+        color: #4d4d4d;
+        &:lang(en) {
+          font-family: myEnFont;
+        }
+        &:lang(ar) {
+          font-family: myArFont;
+        }
+      }
+    }
+    .form_btn:disabled {
+      color: #f5f5f5;
+      background: #ffc989;
+      pointer-events: auto;
+      cursor: not-allowed;
+    }
+    .form_btn {
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #fa9319;
+      &:lang(en) {
+        font-family: myEnFont;
+      }
+      &:lang(ar) {
+        font-family: myArFont;
+      }
+    }
+    .upload_input_text {
+      &:lang(en) {
+        font-family: myEnFont;
+      }
+      &:lang(ar) {
+        font-family: myArFont;
+      }
+    }
+    .otp_input {
+      width: calc(100% / 4);
+      height: 56px;
+      margin: 0 0.25rem;
+      font-size: 1rem;
+      text-align: center;
+      border-radius: 14px;
+      background-color: #f5f6f8;
+    }
+  }
+}

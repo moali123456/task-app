@@ -1,0 +1,17 @@
+#addFacility {
+  div.h-10 {
+    height: auto !important;
+  }
+  input {
+    height: 56px;
+    border-radius: 14px;
+    border-color: #f5f6f8;
+    background-color: #f5f6f8;
+    &:lang(en) {
+      font-family: myEnFont;
+    }
+    &:lang(ar) {
+      font-family: myArFont;
+    }
+  }
+}

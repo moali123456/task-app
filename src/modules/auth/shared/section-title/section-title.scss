@@ -1,0 +1,21 @@
+/**--- Section Title Css ---**/
+#section_title {
+  h3 {
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  p {
+    color: #000;
+    line-height: 1.8;
+    font-size: 1.15rem;
+    .color {
+      color: #ff1612;
+      font-weight: 600;
+      display: inline-flex;
+      margin-inline-start: 10px;
+      text-decoration: none;
+    }
+  }
+}

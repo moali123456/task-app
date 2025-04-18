@@ -1,0 +1,15 @@
+/** ====================
+ *  Admin layout css
+=======================*/
+#admin_layout {
+  .main_content {
+    @media screen and (max-width: 900px) {
+    //   &.closed {
+    //     margin-inline-start: 0;
+    //   }
+      &.opened {
+        margin-inline-start: 0;
+      }
+    }
+  }
+}

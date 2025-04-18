@@ -1,0 +1,30 @@
+/**--- Details Page Css ---**/
+#details_page {
+  .date_bx {
+    .opacity-1 {
+      opacity: 100% !important;
+    }
+    input {
+      padding-inline-start: 75px;
+      background-color: #f5f6f8;
+    }
+  }
+  .about_rate{
+    svg{
+      width: 20px;
+      height: 20px;
+      cursor: auto;
+    }
+  }
+  .bg-opacity-60{
+    background-color: #e7eeff;
+    // background-color: #f4f5f7;
+  }
+  .list_item{
+    border-bottom: 1px solid #E5E5E5;
+    &:last-child{
+      border-bottom: 0;
+    }
+  }
+}
+

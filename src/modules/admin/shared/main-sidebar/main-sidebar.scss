@@ -1,0 +1,50 @@
+#side_bar {
+  @media screen and (max-width: 900px) {
+    &.closed {
+      inset-inline-start: 0px;
+    }
+    &.opened {
+      inset-inline-start: -250px;
+    }
+  }
+  .ps-menu-button {
+    &:hover {
+      background-color: #5574ff;
+      transition: all 0.5s;
+    }
+  }
+  .sidebar-logo {
+    img {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
+        hue-rotate(281deg) brightness(108%) contrast(103%);
+    }
+  }
+  .sidebar-collapsed {
+    .sidebar-logo {
+      img {
+        filter: none;
+      }
+    }
+  }
+}
+// @media screen and (max-width: 768px) {
+//   .main-sidebar {
+//     inset-inline-start: -250px;
+//     //width: 250px !important;
+//     //min-width: 250px !important;
+//     &.sidebar-collapsed {
+//       inset-inline-start: 0;
+//     }
+//   }
+//   .main_content {
+//     margin-inline-start: 0;
+//   }
+//   #side_bar {
+//     //inset-inline-start: -250px;
+//     //width: 0;
+//     //min-width: 0;
+//   }
+//   // .main_content {
+//   //   margin-inline-start: 0 !important;
+//   // }
+// }

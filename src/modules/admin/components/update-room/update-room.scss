@@ -1,0 +1,51 @@
+#add_room_page {
+  div.h-10 {
+    height: auto !important;
+  }
+  input {
+    height: 56px;
+    border-radius: 14px;
+    border-color: #f5f6f8;
+    background-color: #f5f6f8;
+    &:lang(en) {
+      font-family: myEnFont;
+    }
+    &:lang(ar) {
+      font-family: myArFont;
+    }
+  }
+  .form_btn {
+    font-size: 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    background-color: var(--main_blue_color);
+    &:lang(en) {
+      font-family: myEnFont;
+    }
+    &:lang(ar) {
+      font-family: myArFont;
+    }
+  }
+  .upload_input_text {
+    &:lang(en) {
+      font-family: myEnFont;
+    }
+    &:lang(ar) {
+      font-family: myArFont;
+    }
+  }
+  .facilities_select {
+    input {
+      height: 42px;
+    }
+    .css-t3ipsp-control,
+    .css-13cymwt-control {
+      border-radius: 14px;
+      border-color: #f5f6f8;
+      background-color: #f5f6f8;
+    }
+    .css-t3ipsp-control {
+      box-shadow: 0 0 0 1px #1f1f1f;
+    }
+  }
+}
