@@ -68,11 +68,11 @@ export const ROOMS_FACILITIES_ADMIN_URLS = {
 };
 
 // USERS GUEST URL
-const BASE_GUEST_USERS = `${BASE_URL}/portal/users`;
+const BASE_GUEST_USERS = `${BASE_URL}/Users`;
 
 export const USERS_GUEST_URLS = {
   login: `${BASE_GUEST_USERS}/Login`,
-  register: `${BASE_GUEST_USERS}`,
+  register: `${BASE_GUEST_USERS}/Register`,
   forgotPass: `${BASE_GUEST_USERS}/forgot-password`,
   resetPass: `${BASE_GUEST_USERS}/reset-password`,
   authGoogle: `${BASE_GUEST_USERS}/auth/google`,

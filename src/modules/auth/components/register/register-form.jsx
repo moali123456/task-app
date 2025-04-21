@@ -50,7 +50,6 @@ const RegisterForm = () => {
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("country", data.country);
     formData.append("profileImage", uploadedFile); // Add the uploaded file
-    formData.append("role", "user");
 
     return formData;
   };
@@ -65,7 +64,7 @@ const RegisterForm = () => {
     const recipeData = appendToFormData(data);
     try {
       const response = await axios.post(USERS_GUEST_URLS.register, recipeData);
-      navigate("/auth/login");
+      navigate("/login");
       toast.success(response.data.message || t("register_successfuly"));
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -92,6 +91,32 @@ const RegisterForm = () => {
   return (
     <div id="auth_form_bx">
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        {/* upload Field */}
+        <div className="mt-5 mb-3 flex justify-center items-center flex-col">
+          <UploadFile
+            uploadedFiles={uploadedFiles}
+            setUploadedFiles={setUploadedFiles}
+            fileError={fileError}
+            setFileError={setFileError}
+            setUploadedFile={setUploadedFile}
+            maxLength={1}
+            maxLengthError={maxLengthError}
+            setMaxLengthError={setMaxLengthError}
+          />
+
+          {/* Display error messages */}
+          {fileError && !maxLengthError && (
+            <p className="mt-1 text-[#ff3728] text-[14px] font-[500]">
+              {t("upload_required")}
+            </p>
+          )}
+          {maxLengthError && !fileError && (
+            <p className="mt-1 text-[#ff3728] text-[14px] font-[500]">
+              {t("max_files_error", { maxLength: 3 })}
+            </p>
+          )}
+        </div>
+
         {/*  */}
         <div className="grid grid-cols-12 gap-4">
           {/* Name Field */}
@@ -304,45 +329,6 @@ const RegisterForm = () => {
               </p>
             )}
           </div>
-        </div>
-
-        {/* upload Field */}
-        <div className="mt-6 mb-8">
-          <UploadFile
-            uploadedFiles={uploadedFiles}
-            setUploadedFiles={setUploadedFiles}
-            fileError={fileError}
-            setFileError={setFileError}
-            setUploadedFile={setUploadedFile}
-            maxLength={1}
-            maxLengthError={maxLengthError}
-            setMaxLengthError={setMaxLengthError}
-          />
-
-          {/* Display error messages */}
-          {fileError && !maxLengthError && (
-            <p className="mt-1 text-[#ff3728] text-[14px] font-[500]">
-              {t("upload_required")}
-            </p>
-          )}
-          {maxLengthError && !fileError && (
-            <p className="mt-1 text-[#ff3728] text-[14px] font-[500]">
-              {t("max_files_error", { maxLength: 3 })}
-            </p>
-          )}
-          {/* <UploadFile
-            uploadedFiles={uploadedFiles}
-            setUploadedFiles={setUploadedFiles}
-            fileError={fileError} 
-            setFileError={setFileError}
-            setUploadedFile={setUploadedFile}
-          />
-
-          {fileError && (
-            <p className="mt-1 text-[#ff3728] text-[14px] font-[500]">
-              {t("upload_required")}
-            </p>
-          )} */}
         </div>
 
         {/* Submit Button */}
