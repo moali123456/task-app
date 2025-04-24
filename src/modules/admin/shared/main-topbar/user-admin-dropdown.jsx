@@ -7,9 +7,7 @@ import {
   Avatar,
   Typography,
 } from "@material-tailwind/react";
-import {
-  ArrowRightStartOnRectangleIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
 import LogOut from "../../../shared/logout/logout";
 
 const UserAdminDropdown = ({ imagePath, userName }) => {

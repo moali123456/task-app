@@ -12,8 +12,8 @@ const Register = () => {
     <div id="register_page" className="">
       <div className="">
         <div className="flex justify-center">
-          <div className="w-[50%] min-h-[calc(100vh-82px)] flex items-center">
-            <Card className="mt-8 w-full shadow-none rounded-[12px]">
+          <div className="w-[90%] sm:w-[80%] md:w-[80%] lg:w-[50%] min-h-[calc(100vh-113px)] flex items-center">
+            <Card className="mt-6 mb-8 w-full shadow-none rounded-[12px]">
               <CardBody>
                 <Typography
                   variant="h3"

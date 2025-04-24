@@ -21,7 +21,7 @@ import {
   ROOMS_ADMIN_URLS,
   BASE_HEADERS,
 } from "../../../../constants/ADMIN_END_POINTS";
-import SkeletonOne from "../../../landing-page/shared/skeleton/skeleton-one";
+import SkeletonOne from "../../shared/skeleton/skeleton-one";
 import Images from "../../../../assets/Images/Images";
 
 const DetailsModal = ({ open, handleOpen, roomId }) => {

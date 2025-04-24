@@ -14,7 +14,7 @@ import {
 import { EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { EyeIcon, TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
-import SkeletonOne from "../../../landing-page/shared/skeleton/skeleton-one";
+import SkeletonOne from "../../shared/skeleton/skeleton-one";
 import { ROOMS_ADMIN_URLS } from "../../../../constants/ADMIN_END_POINTS";
 import axios from "axios";
 import Images from "../../../../assets/Images/Images";

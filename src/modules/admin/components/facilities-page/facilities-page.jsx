@@ -17,7 +17,7 @@ import {
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
-import SkeletonOne from "../../../landing-page/shared/skeleton/skeleton-one";
+import SkeletonOne from "../../shared/skeleton/skeleton-one";
 import { ROOMS_FACILITIES_ADMIN_URLS } from "../../../../constants/ADMIN_END_POINTS";
 import axios from "axios";
 import MainPagination from "../../shared/main-pagination/main-pagination";

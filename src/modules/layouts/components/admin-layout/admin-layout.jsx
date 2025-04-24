@@ -26,7 +26,7 @@ const AdminLayout = () => {
 
         {/* Content */}
         <div
-          className={`w-full p-5 overflow-hidden main_content ${
+          className={`w-full py-5 pe-5 ps-[30px] overflow-hidden bg-[#F5F5F7] main_content ${
             sideBarCollapsed ? "ms-20 closed" : "ms-60 opened"
           } transition-all duration-500`}
         >
@@ -43,7 +43,7 @@ const AdminLayout = () => {
             {sideBarCollapsed ? "Expand" : "Collapse"}
           </button> */}
 
-          <main className="py-6 px-4">
+          <main className="py-6 px-0">
             <Outlet />
           </main>
         </div>

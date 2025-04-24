@@ -9,16 +9,16 @@
   }
   .ps-menu-button {
     &:hover {
-      background-color: #5574ff;
+      background-color: #ffb44b;
       transition: all 0.5s;
     }
   }
-  .sidebar-logo {
-    img {
-      filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
-        hue-rotate(281deg) brightness(108%) contrast(103%);
-    }
-  }
+  // .sidebar-logo {
+  //   img {
+  //     filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
+  //       hue-rotate(281deg) brightness(108%) contrast(103%);
+  //   }
+  // }
   .sidebar-collapsed {
     .sidebar-logo {
       img {

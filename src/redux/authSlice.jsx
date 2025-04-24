@@ -18,19 +18,10 @@ export const authSlice = createSlice({
       localStorage.setItem("infooooo", JSON.stringify(action.payload));
     },
     logout: (state) => {
-      const userRole = state.userData?.user?.role;
-      state.user = null;
       state.isLogged = false;
       localStorage.removeItem("infooooo");
-      if (userRole === "admin") {
-        // navigate("/auth/login");
-        window.location.href = "/auth/login";
-        // window.location.reload();
-      } else {
-        // navigate("/home");
-        window.location.href = "/home";
-        // window.location.reload();
-      }
+      //navigate("/auth/login");
+      window.location.href = "/login";
     },
   },
 });

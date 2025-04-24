@@ -7,6 +7,15 @@ import Images from "../../../../assets/Images/Images";
 import { logout } from "../../../../redux/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {
+  UsersIcon,
+  UserGroupIcon,
+  Squares2X2Icon,
+  QueueListIcon,
+  PowerIcon,
+  HomeIcon,
+  ArrowRightStartOnRectangleIcon,
+} from "@heroicons/react/24/solid";
 import "./main-sidebar.scss";
 
 const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
@@ -32,154 +41,117 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
           sideBarCollapsed ? "sidebar-collapsed" : "w-60 min-w-60"
         }`}
       >
-        <Menu className="h-screen bg-[#203FC7]">
+        <Menu className="h-screen bg-[#fff]">
           <div
-            className={`sidebar-logo bg-[#9caeff] ${
+            className={`sidebar-logo bg-[#fff] ${
               sideBarCollapsed ? "ps-4 py-2 h-[60px]" : "ps-5 py-4"
             }`}
           >
             {/* <div className="sidebar-logo p-4 bg-[#0022bd]"> */}
             <img
-              src={sideBarCollapsed ? Images.small_logo : Images.colorLogo}
-              className={`${sideBarCollapsed ? "h-11" : ""}`}
+              src={sideBarCollapsed ? Images.small_logo : Images.logo_3_png}
+              className={`${sideBarCollapsed ? "h-11" : "w-48"}`}
               alt="pic"
             />
           </div>
-          {/* <MenuItem
-            icon={<img src={Images.home_icon} className="w-5.5" alt="pic" />}
-            className="text-white text-[15px]"
-          >
-            {t("home")}
-          </MenuItem> */}
 
           {/* home */}
           {sideBarCollapsed ? (
             <Tooltip
               content={t("home")}
-              className="bg-[#203FC7] font-light"
+              className="bg-[#FF9500] font-light"
               placement={currentLang === "ar" ? "left" : "right"}
             >
               <div>
                 <MenuItem
-                  icon={
-                    <img src={Images.home_icon} className="w-5.5" alt="pic" />
-                  }
-                  className="text-white text-[15px]"
+                  icon={<HomeIcon className="text-[#8E92BC] w-6.5" />}
+                  className="text-[#8E92BC] text-[15px]"
                   onClick={() => navigate("/dashboard")}
                 />
               </div>
             </Tooltip>
           ) : (
             <MenuItem
-              icon={<img src={Images.home_icon} className="w-5.5" alt="pic" />}
-              className="text-white text-[15px]"
+              icon={<HomeIcon className="text-[#141522] w-6.5" />}
+              className="text-[#141522] font-medium text-[17px] bg-[#F5F5F7] rounded-lg mx-4 !w-[calc(100%-32px)]"
               onClick={() => navigate("/dashboard")}
             >
               {t("home")}
             </MenuItem>
           )}
 
-          {/* rooms */}
+          {/* users */}
           {sideBarCollapsed ? (
             <Tooltip
-              content={t("rooms")}
-              className="bg-[#203FC7] font-light"
+              content={t("users")}
+              className="bg-[#FF9500] font-light"
               placement={currentLang === "ar" ? "left" : "right"}
             >
               <div>
                 <MenuItem
-                  icon={
-                    <img src={Images.catug_icon} className="w-5" alt="pic" />
-                  }
-                  className="text-white text-[15px]"
+                  icon={<UserGroupIcon className="text-[#8E92BC] w-6.5" />}
+                  className="text-[#8E92BC] text-[15px]"
+                  onClick={() => navigate("/dashboard")}
+                />
+              </div>
+            </Tooltip>
+          ) : (
+            <MenuItem
+              icon={<UserGroupIcon className="text-[#8E92BC] w-6.5" />}
+              className="text-[#8E92BC] font-medium text-[17px]"
+              onClick={() => navigate("/dashboard")}
+            >
+              {t("users")}
+            </MenuItem>
+          )}
+
+          {/* projects */}
+          {sideBarCollapsed ? (
+            <Tooltip
+              content={t("projects")}
+              className="bg-[#FF9500] font-light"
+              placement={currentLang === "ar" ? "left" : "right"}
+            >
+              <div>
+                <MenuItem
+                  icon={<Squares2X2Icon className="text-[#8E92BC] w-6.5" />}
+                  className="text-[#8E92BC] text-[15px]"
                   onClick={() => navigate("/dashboard/admin-rooms")}
                 />
               </div>
             </Tooltip>
           ) : (
             <MenuItem
-              icon={<img src={Images.catug_icon} className="w-5" alt="pic" />}
-              className="text-white text-[15px]"
+              icon={<Squares2X2Icon className="text-[#8E92BC] w-6.5" />}
+              className="text-[#8E92BC] font-medium text-[17px]"
               onClick={() => navigate("/dashboard/admin-rooms")}
             >
-              {t("rooms")}
+              {t("projects")}
             </MenuItem>
           )}
 
-          {/* ads */}
+          {/* tasks */}
           {sideBarCollapsed ? (
             <Tooltip
-              content={t("ads")}
-              className="bg-[#203FC7] font-light"
+              content={t("tasks")}
+              className="bg-[#FF9500] font-light"
               placement={currentLang === "ar" ? "left" : "right"}
             >
               <div>
                 <MenuItem
-                  icon={<img src={Images.ads_icon} className="w-7" alt="pic" />}
-                  className="text-white text-[15px]"
+                  icon={<QueueListIcon className="text-[#8E92BC] w-6.5" />}
+                  className="text-[#8E92BC] text-[15px]"
                   onClick={() => navigate("/dashboard/ads")}
                 />
               </div>
             </Tooltip>
           ) : (
             <MenuItem
-              icon={<img src={Images.ads_icon} className="w-7" alt="pic" />}
-              className="text-white text-[15px]"
+              icon={<QueueListIcon className="text-[#8E92BC] w-6.5" />}
+              className="text-[#8E92BC] font-medium text-[17px]"
               onClick={() => navigate("/dashboard/ads")}
             >
-              {t("ads")}
-            </MenuItem>
-          )}
-
-          {/* booking */}
-          {sideBarCollapsed ? (
-            <Tooltip
-              content={t("facilities")}
-              className="bg-[#203FC7] font-light"
-              placement={currentLang === "ar" ? "left" : "right"}
-            >
-              <div>
-                <MenuItem
-                  icon={
-                    <img src={Images.date_icon} className="w-5" alt="pic" />
-                  }
-                  className="text-white text-[15px]"
-                  onClick={() => navigate("/dashboard/facilities")}
-                />
-              </div>
-            </Tooltip>
-          ) : (
-            <MenuItem
-              icon={<img src={Images.date_icon} className="w-5" alt="pic" />}
-              className="text-white text-[15px]"
-              onClick={() => navigate("/dashboard/facilities")}
-            >
-              {t("facilities")}
-            </MenuItem>
-          )}
-
-          {/* password */}
-          {sideBarCollapsed ? (
-            <Tooltip
-              content={t("change_password")}
-              className="bg-[#203FC7] font-light"
-              placement={currentLang === "ar" ? "left" : "right"}
-            >
-              <div>
-                <MenuItem
-                  icon={
-                    <img src={Images.lockIcon} className="w-5.5" alt="pic" />
-                  }
-                  className="text-white text-[15px]"
-                />
-              </div>
-            </Tooltip>
-          ) : (
-            <MenuItem
-              icon={<img src={Images.lockIcon} className="w-5.5" alt="pic" />}
-              className="text-white text-[15px]"
-            >
-              {t("change_password")}
+              {t("tasks")}
             </MenuItem>
           )}
 
@@ -187,24 +159,24 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
           {sideBarCollapsed ? (
             <Tooltip
               content={t("logout")}
-              className="bg-[#203FC7] font-light"
+              className="bg-[#FF9500] font-light"
               placement={currentLang === "ar" ? "left" : "right"}
             >
               <div>
                 <MenuItem
                   icon={
-                    <img src={Images.logout_icon} className="w-5.5" alt="pic" />
+                    <ArrowRightStartOnRectangleIcon className="text-[#8E92BC] w-6.5" />
                   }
-                  className="text-white text-[15px]"
+                  className="text-[#8E92BC] text-[15px]"
                 />
               </div>
             </Tooltip>
           ) : (
             <MenuItem
               icon={
-                <img src={Images.logout_icon} className="w-5.5" alt="pic" />
+                <ArrowRightStartOnRectangleIcon className="text-[#8E92BC] w-6.5" />
               }
-              className="text-white text-[15px]"
+              className="text-[#8E92BC] font-medium text-[17px]"
               onClick={() => dispatch(logout())}
             >
               {t("logout")}

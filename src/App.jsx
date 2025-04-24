@@ -9,6 +9,7 @@ import AdminLayout from "./modules/layouts/components/admin-layout/admin-layout"
 // Auth Pages
 import Login from "./modules/auth/components/login/login";
 import Register from "./modules/auth/components/register/register";
+import VerifyAccount from "./modules/auth/components/verify-account/verify-account";
 import ForgotPassword from "./modules/auth/components/forgot-password/forgot-password";
 import ResetPassword from "./modules/auth/components/reset-password/reset-password";
 import AuthNotFound from "./modules/auth/components/auth-not-found/auth-not-found";
@@ -39,6 +40,7 @@ const App = () => {
         { index: true, element: <Login /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
+        { path: "verify-account", element: <VerifyAccount /> },
         { path: "forgot-pass", element: <ForgotPassword /> },
         { path: "reset-pass", element: <ResetPassword /> },
         { path: "*", element: <AuthNotFound /> },

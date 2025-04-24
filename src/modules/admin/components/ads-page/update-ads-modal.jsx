@@ -16,7 +16,7 @@ import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { ADS_ADMIN_URLS } from "../../../../constants/ADMIN_END_POINTS";
 import { toast } from "react-toastify";
-import SkeletonOne from "../../../landing-page/shared/skeleton/skeleton-one";
+import SkeletonOne from "../../shared/skeleton/skeleton-one";
 
 const UpdateAdsModal = ({ open, handleOpen, reloadAds, adsId }) => {
   const { t } = useTranslation();

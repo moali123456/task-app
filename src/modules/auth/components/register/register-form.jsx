@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Input, Button, Spinner } from "@material-tailwind/react";
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ import Images from "../../../../assets/Images/Images";
 import { USERS_GUEST_URLS } from "../../../../constants/END_POINTS";
 import CountryDropdown from "../../../Shared/country-dropdown/country-dropdown";
 import UploadFile from "../../../shared/upload-file/upload-file";
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
 const RegisterForm = () => {
   const { t } = useTranslation();
@@ -64,7 +65,7 @@ const RegisterForm = () => {
     const recipeData = appendToFormData(data);
     try {
       const response = await axios.post(USERS_GUEST_URLS.register, recipeData);
-      navigate("/login");
+      navigate("/verify-account");
       toast.success(response.data.message || t("register_successfuly"));
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -348,6 +349,15 @@ const RegisterForm = () => {
             )}
           </Button>
         </div>
+
+        {/* login */}
+        <div className="text-[#364153] mt-4 text-sm flex gap-1.5 justify-center">
+          {t("already_have_account")}
+          <Link to="/login" className="flex gap-0.5 items-center">
+            {t("login")} <ArrowUpRightIcon className="size-3.5" />
+          </Link>
+        </div>
+        {/*  */}
       </form>
     </div>
   );

@@ -13,7 +13,7 @@ import {
 import { EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
-import SkeletonOne from "../../../landing-page/shared/skeleton/skeleton-one";
+import SkeletonOne from "../../shared/skeleton/skeleton-one";
 import axios from "axios";
 import { ADS_ADMIN_URLS } from "../../../../constants/ADMIN_END_POINTS";
 import Images from "../../../../assets/Images/Images";

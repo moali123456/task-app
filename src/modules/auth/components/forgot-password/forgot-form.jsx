@@ -1,11 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Input, Button, Spinner } from "@material-tailwind/react";
-import { toast } from "react-toastify";
-import swal from "sweetalert";
-import { USERS_GUEST_URLS } from "../../../../constants/END_POINTS";
+import { handelForgetSubmit } from "../../../../utils/auth-utils/auth-utils";
+import { Link } from "react-router-dom";
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
 const ForgotForm = () => {
   const { t } = useTranslation();
@@ -19,28 +18,32 @@ const ForgotForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    try {
-      const response = await axios.post(USERS_GUEST_URLS.forgotPass, data);
-      navigate("/auth/reset-pass");
-      toast.success(response?.data?.message || t("welcome_back"));
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        swal({
-          title: error.response?.data?.message || t("some_thing_wrong"),
-          text: "error",
-          icon: "error",
-          button: "try again",
-        });
-        //toast.error(error.response?.data?.message || t("wrong_message"));
-      }
-    }
+  // const onSubmit = async (data) => {
+  //   console.log(data);
+  //   try {
+  //     const response = await axios.post(USERS_GUEST_URLS.forgotPass, data);
+  //     navigate("/auth/reset-pass");
+  //     toast.success(response?.data?.message || t("welcome_back"));
+  //   } catch (error) {
+  //     if (axios.isAxiosError(error)) {
+  //       swal({
+  //         title: error.response?.data?.message || t("some_thing_wrong"),
+  //         text: "error",
+  //         icon: "error",
+  //         button: "try again",
+  //       });
+  //       //toast.error(error.response?.data?.message || t("wrong_message"));
+  //     }
+  //   }
+  // };
+
+  const handleFormSubmit = (formData) => {
+    handelForgetSubmit(formData, navigate, t);
   };
 
   return (
     <div id="auth_form_bx">
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+      <form onSubmit={handleSubmit(handleFormSubmit)} autoComplete="off">
         {/* Email Field */}
         <div>
           <label htmlFor="email">{t("email_label")}</label>
@@ -88,6 +91,15 @@ const ForgotForm = () => {
             )}
           </Button>
         </div>
+
+        {/* login */}
+        <div className="text-[#364153] mt-4 text-sm flex gap-1.5 justify-center">
+          {t("already_have_account")}
+          <Link to="/login" className="flex gap-0.5 items-center">
+            {t("login")} <ArrowUpRightIcon className="size-3.5" />
+          </Link>
+        </div>
+        {/*  */}
       </form>
     </div>
   );

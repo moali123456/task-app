@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ROOMS_FACILITIES_ADMIN_URLS } from "../../../../constants/ADMIN_END_POINTS";
 import { toast } from "react-toastify";
-import SkeletonOne from "../../../landing-page/shared/skeleton/skeleton-one";
+import SkeletonOne from "../../shared/skeleton/skeleton-one";
 import Images from "../../../../assets/Images/Images";
 
 const UpdateFacilityModal = ({

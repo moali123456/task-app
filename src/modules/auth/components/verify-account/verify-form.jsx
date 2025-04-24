@@ -1,26 +1,20 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { Input, Button, Spinner } from "@material-tailwind/react";
-import Images from "../../../../assets/Images/Images";
-import { handelLoginSubmit } from "../../../../utils/auth-utils/auth-utils";
-import { useDispatch } from "react-redux";
+import OtpInput from "react-otp-input";
+import { handelVerifySubmit } from "../../../../utils/auth-utils/auth-utils";
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
-const LoginForm = () => {
+const VerifyForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const [passwordShown, setPasswordShown] = useState(false);
-
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
-  };
+  const [code, setCode] = useState("");
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
   } = useForm({
@@ -30,11 +24,8 @@ const LoginForm = () => {
   // const onSubmit = async (data) => {
   //   console.log(data);
   //   try {
-  //     const response = await axios.post(USERS_GUEST_URLS.login, data);
-  //     // Dispatch action to store user data in Redux
-  //     dispatch(loginAction(response?.data));
-  //     navigate("/");
-
+  //     const response = await axios.put(USERS_GUEST_URLS.verifyAccount, data);
+  //     navigate("/dashboard");
   //     toast.success(response?.data?.message || t("welcome_back"));
   //   } catch (error) {
   //     if (axios.isAxiosError(error)) {
@@ -50,7 +41,7 @@ const LoginForm = () => {
   // };
 
   const handleFormSubmit = (formData) => {
-    handelLoginSubmit(formData, dispatch, navigate, t);
+    handelVerifySubmit(formData, navigate, t);
   };
 
   return (
@@ -97,51 +88,51 @@ const LoginForm = () => {
             </label>
           </div>
           <div className="mt-2 relative">
-            <Input
-              id="password"
-              name="password"
-              type={passwordShown ? "text" : "password"}
-              autoComplete="new-password"
-              placeholder="********"
-              className="!border !border-transparent bg-white text-gray-900 placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900"
-              labelProps={{
-                className: "hidden",
-              }}
-              {...register("password", {
-                required: t("password_required"),
-                minLength: {
-                  value: 7,
-                  message: t("valid_password_msg"),
-                },
-              })}
-            />
-            <span
-              className="absolute inset-y-0 end-3 flex items-center cursor-pointer"
-              onClick={togglePasswordVisiblity}
-            >
-              <img
-                className="w-[20px] eye_icon"
-                src={
-                  passwordShown ? Images.eye_open_icon : Images.eye_closed_icon
-                }
-                alt="toggle password visibility"
-              />
-            </span>
+            {/* Otp Field */}
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-12 lg:col-span-12 mt-4">
+                <label>{t("otp_label")}</label>
+                <div className="mt-2">
+                  <Controller
+                    name="code"
+                    control={control}
+                    rules={{
+                      required: t("code_required"),
+                      validate: (value) =>
+                        value.length === 4 || t("otp_length_required"),
+                    }}
+                    render={({ field }) => (
+                      <OtpInput
+                        value={code}
+                        onChange={(value) => {
+                          setCode(value);
+                          field.onChange(value); // Sync with react-hook-form
+                        }}
+                        numInputs={4}
+                        separator={<span>-</span>}
+                        renderInput={(props) => (
+                          <input
+                            {...props}
+                            className="otp_input"
+                            style={{
+                              border: errors.seed
+                                ? "1px solid red"
+                                : "1px solid #f5f6f8",
+                            }}
+                          />
+                        )}
+                      />
+                    )}
+                  />
+                  {errors.code && (
+                    <p className="mt-1 text-[#ff3728] text-[14px] font-[300]">
+                      {errors.code.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
-          {errors.password && (
-            <p className="mt-1 text-[#ff3728] text-[14px] font-[300]">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
-
-        <div className="forgot_link flex justify-end mb-[50px] mt-[10px]">
-          <Link
-            to="/forgot-pass"
-            className="forget_link text-[13px] text-[#4D4D4D]"
-          >
-            {t("forgot_password")}
-          </Link>
         </div>
 
         {/* Submit Button */}
@@ -154,20 +145,20 @@ const LoginForm = () => {
             {isSubmitting ? (
               <>
                 {/* {t("login")} <img src={Images.loader_btn} className="w-[30px]" alt="pic" /> */}
-                {t("login")} <Spinner className="h-6 w-6" color="white" />
+                {t("verify")} <Spinner className="h-6 w-6" color="white" />
               </>
             ) : (
-              <>{t("login")}</>
+              <>{t("verify")}</>
             )}
           </Button>
         </div>
         {/*  */}
 
-        {/* register */}
+        {/* login */}
         <div className="text-[#364153] mt-4 text-sm flex gap-1.5 justify-center">
-          {t("dont_have_account")}
-          <Link to="/register" className="flex gap-0.5 items-center">
-            {t("sign_up")} <ArrowUpRightIcon className="size-3.5" />
+          {t("already_have_account")}
+          <Link to="/login" className="flex gap-0.5 items-center">
+            {t("login")} <ArrowUpRightIcon className="size-3.5" />
           </Link>
         </div>
         {/*  */}
@@ -176,4 +167,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default VerifyForm;
