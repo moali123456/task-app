@@ -107,5 +107,10 @@
   "not_active": "غير مفعل",
   "isactive_required": "حالة الغرفة مطلوبة",
   "projects": "المشاريع",
-  "tasks": "المهام"
+  "tasks": "المهام",
+  "status": "الحاله",
+  "email": "البريد الالكتروني",
+  "add_new_manager": "اضافة مدير جديد",
+  "users_details": "بيانات المستخدمين",
+  "page_sub_title": "يمكنك التحقق من كافة التفاصيل"
 }

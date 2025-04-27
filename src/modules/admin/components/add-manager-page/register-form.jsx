@@ -7,7 +7,10 @@ import { Input, Button, Spinner } from "@material-tailwind/react";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
 import Images from "../../../../assets/Images/Images";
-import { USERS_GUEST_URLS } from "../../../../constants/END_POINTS";
+import {
+  USERS_GUEST_URLS,
+  BASE_HEADERS,
+} from "../../../../constants/END_POINTS";
 import CountryDropdown from "../../../Shared/country-dropdown/country-dropdown";
 import UploadFile from "../../../shared/upload-file/upload-file";
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
@@ -51,7 +54,6 @@ const RegisterForm = () => {
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("country", data.country);
     formData.append("profileImage", uploadedFile); // Add the uploaded file
-    formData.append("userGroup", "Manager")
 
     return formData;
   };
@@ -65,7 +67,11 @@ const RegisterForm = () => {
 
     const recipeData = appendToFormData(data);
     try {
-      const response = await axios.post(USERS_GUEST_URLS.register, recipeData);
+      const response = await axios.post(
+        USERS_GUEST_URLS.createManager,
+        recipeData,
+        BASE_HEADERS
+      );
       navigate("/verify-account");
       toast.success(response.data.message || t("register_successfuly"));
     } catch (error) {

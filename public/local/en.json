@@ -107,5 +107,10 @@
   "not_active": "Not active",
   "isactive_required": "Active status is required",
   "projects": "Projects",
-  "tasks": "Tasks"
+  "tasks": "Tasks",
+  "status": "Status",
+  "email": "Email",
+  "add_new_manager": "Add new manager",
+  "users_details": "Users details",
+  "page_sub_title": "You can check all details"
 }

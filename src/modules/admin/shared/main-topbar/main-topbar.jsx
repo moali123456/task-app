@@ -2,9 +2,6 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Card,
-  CardBody,
-  CardHeader,
-  Typography,
 } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/solid";

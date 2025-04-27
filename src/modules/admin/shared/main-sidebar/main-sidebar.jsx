@@ -5,7 +5,7 @@ import { Tooltip } from "@material-tailwind/react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import Images from "../../../../assets/Images/Images";
 import { logout } from "../../../../redux/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   UsersIcon,
@@ -27,6 +27,8 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
   const [broken, setBroken] = useState(
     window.matchMedia("(max-width: 800px)").matches
   );
+  const { userProfileData } = useSelector((state) => state.profile);
+  const userRole = userProfileData?.group?.name;
 
   return (
     <div
@@ -55,6 +57,12 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
             />
           </div>
 
+          {/* {userRole === "Manager" && (
+            <div className="">
+              {userProfileData?.userName} {userRole}
+            </div>
+          )} */}
+
           {/* home */}
           {sideBarCollapsed ? (
             <Tooltip
@@ -72,8 +80,8 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
             </Tooltip>
           ) : (
             <MenuItem
-              icon={<HomeIcon className="text-[#141522] w-6.5" />}
-              className="text-[#141522] font-medium text-[17px] bg-[#F5F5F7] rounded-lg mx-4 !w-[calc(100%-32px)]"
+              icon={<HomeIcon className="text-[#8E92BC] w-6.5" />}
+              className="text-[#8E92BC] font-medium text-[17px] menu-item active"
               onClick={() => navigate("/dashboard")}
             >
               {t("home")}
@@ -81,28 +89,32 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
           )}
 
           {/* users */}
-          {sideBarCollapsed ? (
-            <Tooltip
-              content={t("users")}
-              className="bg-[#FF9500] font-light"
-              placement={currentLang === "ar" ? "left" : "right"}
-            >
-              <div>
+          {userRole === "Manager" && (
+            <>
+              {sideBarCollapsed ? (
+                <Tooltip
+                  content={t("users")}
+                  className="bg-[#FF9500] font-light"
+                  placement={currentLang === "ar" ? "left" : "right"}
+                >
+                  <div>
+                    <MenuItem
+                      icon={<UserGroupIcon className="text-[#8E92BC] w-6.5" />}
+                      className="text-[#8E92BC] text-[15px]"
+                      onClick={() => navigate("/dashboard/users")}
+                    />
+                  </div>
+                </Tooltip>
+              ) : (
                 <MenuItem
                   icon={<UserGroupIcon className="text-[#8E92BC] w-6.5" />}
-                  className="text-[#8E92BC] text-[15px]"
-                  onClick={() => navigate("/dashboard")}
-                />
-              </div>
-            </Tooltip>
-          ) : (
-            <MenuItem
-              icon={<UserGroupIcon className="text-[#8E92BC] w-6.5" />}
-              className="text-[#8E92BC] font-medium text-[17px]"
-              onClick={() => navigate("/dashboard")}
-            >
-              {t("users")}
-            </MenuItem>
+                  className="text-[#8E92BC] font-medium text-[17px] menu-item"
+                  onClick={() => navigate("/dashboard/users")}
+                >
+                  {t("users")}
+                </MenuItem>
+              )}
+            </>
           )}
 
           {/* projects */}
@@ -116,15 +128,15 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
                 <MenuItem
                   icon={<Squares2X2Icon className="text-[#8E92BC] w-6.5" />}
                   className="text-[#8E92BC] text-[15px]"
-                  onClick={() => navigate("/dashboard/admin-rooms")}
+                  onClick={() => navigate("/dashboard/projects")}
                 />
               </div>
             </Tooltip>
           ) : (
             <MenuItem
               icon={<Squares2X2Icon className="text-[#8E92BC] w-6.5" />}
-              className="text-[#8E92BC] font-medium text-[17px]"
-              onClick={() => navigate("/dashboard/admin-rooms")}
+              className="text-[#8E92BC] font-medium text-[17px] menu-item"
+              onClick={() => navigate("/dashboard/projects")}
             >
               {t("projects")}
             </MenuItem>
@@ -141,15 +153,15 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
                 <MenuItem
                   icon={<QueueListIcon className="text-[#8E92BC] w-6.5" />}
                   className="text-[#8E92BC] text-[15px]"
-                  onClick={() => navigate("/dashboard/ads")}
+                  onClick={() => navigate("/dashboard/tasks")}
                 />
               </div>
             </Tooltip>
           ) : (
             <MenuItem
               icon={<QueueListIcon className="text-[#8E92BC] w-6.5" />}
-              className="text-[#8E92BC] font-medium text-[17px]"
-              onClick={() => navigate("/dashboard/ads")}
+              className="text-[#8E92BC] font-medium text-[17px] menu-item"
+              onClick={() => navigate("/dashboard/tasks")}
             >
               {t("tasks")}
             </MenuItem>
@@ -176,7 +188,7 @@ const MainSidebar = ({ sideBarCollapsed, setSideBarCollapsed }) => {
               icon={
                 <ArrowRightStartOnRectangleIcon className="text-[#8E92BC] w-6.5" />
               }
-              className="text-[#8E92BC] font-medium text-[17px]"
+              className="text-[#8E92BC] font-medium text-[17px] menu-item"
               onClick={() => dispatch(logout())}
             >
               {t("logout")}

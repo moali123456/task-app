@@ -91,15 +91,15 @@ export const handelUserProfileInfo = async (dispatch) => {
   try {
     const token = JSON.parse(localStorage.getItem("infooooo")).token;
 
-    const response = await axios.get(USERS_GUEST_URLS.userInfo(), {
+    const response = await axios.get(USERS_GUEST_URLS?.userInfo(), {
       headers: {
         Authorization: `${token}`,
         "Content-Type": "application/json",
       },
     });
 
-    console.log("response", response);
-    console.log("User data:", response.data);
+    //console.log("response", response);
+    //console.log("User data:", response.data);
     dispatch(setUserProfileData(response?.data));
   } catch (error) {
     console.error("Failed to fetch user data:", error);

@@ -30,7 +30,7 @@ const MainPagination = ({ setCurrentPage, currentPage, totalPages }) => {
             variant={currentPage === page ? "filled" : "text"}
             color="gray"
             className={`cursor-pointer ${
-              currentPage === page ? "bg-[#3252DF]" : ""
+              currentPage === page ? "bg-[#FF9500]" : ""
             }`}
             onClick={() => setCurrentPage(page)}
           >

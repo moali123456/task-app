@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Protected Routes
 import AuthProtectedRoute from "./modules/shared/protected-route/auth-protected-route";
 import AdminProtectedRoute from "./modules/shared/protected-route/admin-protected-route";
+import ManagerProtectedRoute from "./modules/shared/protected-route/manager-protected-route";
 // Layouts
 import AuthLayout from "./modules/layouts/components/auth-layout/auth-layout";
 import AdminLayout from "./modules/layouts/components/admin-layout/admin-layout";
@@ -15,11 +16,10 @@ import ResetPassword from "./modules/auth/components/reset-password/reset-passwo
 import AuthNotFound from "./modules/auth/components/auth-not-found/auth-not-found";
 // Admin Pages
 import DashboardPage from "./modules/admin/components/dashboard-page/dashboard-page";
-import RoomsAdminPage from "./modules/admin/components/rooms-page/rooms-page";
-import AddRoom from "./modules/admin/components/add-room/add-room";
-import UpdateRoom from "./modules/admin/components/update-room/update-room";
-import FacilitiesPage from "./modules/admin/components/facilities-page/facilities-page";
-import AdsPage from "./modules/admin/components/ads-page/ads-page";
+import AddManagerPage from "./modules/admin/components/add-manager-page/add-manager-page";
+import UsersPage from "./modules/admin/components/users-page/users-page";
+import ProjectsPage from "./modules/admin/components/projects-page/projects-page";
+import TasksPage from "./modules/admin/components/tasks-page/tasks-page";
 import AdminNotFound from "./modules/admin/components/admin-not-found/admin-not-found";
 
 //toastify
@@ -56,12 +56,21 @@ const App = () => {
       children: [
         { index: true, element: <DashboardPage /> },
         { path: "home", element: <DashboardPage /> },
-        { path: "admin-rooms", element: <RoomsAdminPage /> },
-        { path: "add-room", element: <AddRoom /> },
-        { path: "update-room/:id", element: <UpdateRoom /> },
-        { path: "facilities", element: <FacilitiesPage /> },
-        { path: "ads", element: <AdsPage /> },
+        { path: "projects", element: <ProjectsPage /> },
+        { path: "tasks", element: <TasksPage /> },
         { path: "*", element: <AdminNotFound /> },
+      ],
+    },
+    {
+      path: "/dashboard",
+      element: (
+        <ManagerProtectedRoute>
+          <AdminLayout />
+        </ManagerProtectedRoute>
+      ),
+      children: [
+        { path: "add-manager", element: <AddManagerPage /> },
+        { path: "users", element: <UsersPage /> },
       ],
     },
   ]);
